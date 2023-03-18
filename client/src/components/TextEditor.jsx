@@ -29,7 +29,7 @@ export default function TextEditor() {
     wrapper.innerHTML = "";
     const editor = document.createElement("div");
     wrapper.append(editor);
-    new Quill(editor, { theme: "snow" });
+    new Quill(editor, { theme: "snow", modules: { toolbar: toolbarOptions } });
   }, []);
   return <div className="container" ref={wrapperRef}></div>;
 }
