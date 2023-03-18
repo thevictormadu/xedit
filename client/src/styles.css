@@ -32,3 +32,25 @@ body{
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
     border: none;
 }
+
+@media print{
+body{
+    background: none;
+}
+
+@page{
+    margin: 1in;
+}
+
+.container .ql-editor{
+    width: 6.5in;
+    height: 9in;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    align-self: flex-start;
+}
+.container .ql-toolbar.ql-snow{
+    display: none;
+}
+}
