@@ -7,6 +7,12 @@ body{
     margin: 0;
 }
 
+.Nav{
+    position: sticky;
+    top: 0;
+    background-color: red;
+}
+
 .container .ql-editor{
     width: 8in;
     min-height: 11in;
