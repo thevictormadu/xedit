@@ -37,6 +37,17 @@ body{
     border: none;
 }
 
+.icon-container {
+    padding: 0.2rem;
+    width: 30px;
+    height: 30px;
+    background-color: #CEE3D4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
 @media print{
 body{
     background: none;
@@ -57,4 +68,6 @@ body{
 .container .ql-toolbar.ql-snow{
     display: none;
 }
+
+
 }
