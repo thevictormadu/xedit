@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 *, *::before, *::after{
     box-sizing: border-box;
 }
@@ -12,49 +16,65 @@ body{
     top: 0;
     background-color: red;
 }
-
-.container .ql-editor{
-    width: 8in;
-    min-height: 11in;
-    background-color: white;
-    padding: 1in;
-    margin: 1rem;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+.quill{
+    background-color: #FAFAFA;
+    padding: 2rem;
+    border-radius: 0 0 .3rem .3rem;
+        border: 1px solid #CEE3D4 !important;
 }
 
-.container .ql-container.ql-snow{
-    border: none;
+.ql-toolbar{
+    border-radius: .3rem;
+    border: 1px solid #CEE3D4 !important;
+    background-color: white;
+    max-width: 450px !important;
+    
+}
+
+
+
+.icon-container {
+    padding: 0.2rem;
+    width: 30px;
+    height: 30px;
+    
     display: flex;
     justify-content: center;
+    align-items: center;
+    border-radius: 50%;
 }
 
-.container .ql-toolbar.ql-snow{
-    position: sticky;
-    top: 0px;
-    z-index: 1;
-    background-color: #f3f3f3;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    border: none;
+
+
+.ql-editor {
+    min-height: 60vh;
+    
+    
+    
 }
 
-@media print{
-body{
-    background: none;
+.ql-container.ql-snow{
+    border-radius: 0 0 .3rem .3rem;
+    border: none !important;
 }
 
-@page{
-    margin: 1in;
+.container {
+    position: relative;
 }
 
-.container .ql-editor{
-    width: 6.5in;
-    height: 9in;
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-    align-self: flex-start;
+.dropdown {
+    background-color: white;
+    padding: 1rem;
+    border-radius: .3rem;
+    width: 10rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    transition: 500ms ease-in;
+    
 }
-.container .ql-toolbar.ql-snow{
-    display: none;
-}
+
+.list-item{
+    display: flex;
+    justify-content: center;
+    
 }

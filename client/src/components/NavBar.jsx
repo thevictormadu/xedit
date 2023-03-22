@@ -13,11 +13,7 @@ import { BiSave } from "react-icons/bi";
 
 export default function NavBar() {
   return (
-    <HStack
-      bgGradient="linear(to-l, #22bdc3, #2dfd87)"
-      p={3}
-      justifyContent={"space-between"}
-    >
+    <HStack bg="#CEE3D4" p={3} justifyContent={"space-between"} borderRadius=".3rem .3rem 0 0">
       <Box>
         <HStack>
           <Image src={logo} width={"35px"} />
@@ -27,7 +23,7 @@ export default function NavBar() {
           </Editable>
         </HStack>
       </Box>
-      <Icon
+      {/* <Icon
         as={BiSave}
         color={"#298CFF"}
         backgroundColor={"#62FDFF"}
@@ -38,7 +34,7 @@ export default function NavBar() {
           backgroundColor: "white",
           color: "teal.500",
         }}
-      />
+      /> */}
     </HStack>
   );
 }
