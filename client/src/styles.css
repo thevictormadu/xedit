@@ -16,6 +16,20 @@ body{
     top: 0;
     background-color: red;
 }
+.quill{
+    background-color: #FAFAFA;
+    padding: 2rem;
+    border-radius: 0 0 .3rem .3rem;
+        border: 1px solid #CEE3D4 !important;
+}
+
+.ql-toolbar{
+    border-radius: .3rem;
+    border: 1px solid #CEE3D4 !important;
+    background-color: white;
+    max-width: 450px !important;
+    
+}
 
 
 
@@ -23,7 +37,7 @@ body{
     padding: 0.2rem;
     width: 30px;
     height: 30px;
-    background-color: #CEE3D4;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +47,15 @@ body{
 
 
 .ql-editor {
-    min-height: 30rem;
+    min-height: 60vh;
+    
+    
+    
+}
+
+.ql-container.ql-snow{
+    border-radius: 0 0 .3rem .3rem;
+    border: none !important;
 }
 
 .container {
@@ -43,7 +65,7 @@ body{
 .dropdown {
     background-color: white;
     padding: 1rem;
-    border-radius: .6rem;
+    border-radius: .3rem;
     width: 10rem;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     list-style: none;

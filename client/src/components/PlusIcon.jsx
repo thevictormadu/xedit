@@ -1,39 +1,43 @@
 import React, { useState, useRef } from "react";
 import { AiOutlinePlus, AiFillPicture } from "react-icons/ai";
+import { BsCameraVideoFill } from "react-icons/bs";
+import { SiGoogleassistant } from "react-icons/si";
 import "../styles.css";
 
 export default function PlusIcon(props) {
   const [showDropDown, setShowDropDown] = useState(false);
   const [youtubeInput, setYoutubeInput] = useState(false);
+  const [facebookInput, setFacebookInput] = useState(false);
   const fileInputRef = useRef(null);
 
-  
   const youtubeInputRef = useRef(null);
 
   function handleImageFileClick() {
     fileInputRef.current.click();
   }
 
-  function handleFacebookClick() {
-    setYoutubeInput(true);
-  }
-
   return (
     <div>
       <div className="container">
         <div
-          className={`icon-container hover:`}
-          onClick={() => setShowDropDown(!showDropDown)}
+          className={`icon-container bg-[#CEE3D4] hover:bg-[#E7F1E9] duration-500 hover:text-[#0A7227] hover:text-[40px]`}
+          onClick={() => {
+            setShowDropDown(!showDropDown);
+            setYoutubeInput(false);
+            setFacebookInput(false);
+          }}
         >
           <AiOutlinePlus />
         </div>
+
         <ul
-          className={`bg-white rounded-md w-72 shadow-[0_0_5px_rgba(0,0,0,0.1)] transition-all absolute -bottom-1/2 left-7 ease-in duration-500  my-2 mx-1 ${
+          className={`bg-white rounded-md w-72 shadow-[0_0_5px_rgba(0,0,0,0.1)] transition-all absolute top-7 left-1 ease-in duration-500  my-2 mx-1 ${
             showDropDown ? "visible" : "hidden"
           }`}
         >
+          <p className="text-xs text-gray-500 ml-5 mt-2 mb-2">EMBEDS</p>
           <li
-            className="flex hover:bg-[#E7F1E9] p-4 cursor-pointer"
+            className="flex hover:bg-[#F7FCF8] p-4 cursor-pointer"
             onClick={handleImageFileClick}
           >
             <span className="list-icon ">
@@ -53,11 +57,14 @@ export default function PlusIcon(props) {
           </li>
 
           <li
-            className="flex hover:bg-[#E7F1E9] p-4 cursor-pointer duration-500 ease-in relative"
-            onClick={handleFacebookClick}
+            className="flex hover:bg-[#F7FCF8] p-4 cursor-pointer duration-300 relative"
+            onClick={() => {
+              setYoutubeInput(true);
+              setFacebookInput(false);
+            }}
           >
             <span className="list-icon ">
-              <AiFillPicture className="text-xl text-gray-500  " />
+              <BsCameraVideoFill className="text-xl text-gray-500  " />
             </span>
             <div className="list-label px-3 flex flex-col space-y-2 ">
               <p className="leading-4 text-gray-500">Video</p>
@@ -67,36 +74,41 @@ export default function PlusIcon(props) {
             </div>
           </li>
           <div
-            className={`absolute top-50 left-[200px] bg-white p-2 w-[17rem] rounded-md shadow-md z-10 transition-all duration-500 ease-in ${
+            className={`absolute top-20 left-[200px] bg-white p-2 w-[17rem] rounded-md shadow-md z-10 transition-all duration-500 ease-in ${
               youtubeInput ? "visible" : "hidden"
             }`}
-            onClick={() => setYoutubeInput(true)}
           >
             <input
               type="text"
               placeholder="Enter Youtube Link"
-              className="p-2 bg-[#E7F1E9] w-[100%] focus:outline-[#CEE3D4] "
+              className="p-2 bg-[#F7FCF8] w-[100%] focus:outline-[#CEE3D4] "
               ref={youtubeInputRef}
               onChange={props.handleYoutubeLink}
               value={props.youtubeInput}
             />
             <div className="flex justify-between">
-              <button className="text-sm py-2 text-[#0A7227]">
-                Submit link
-              </button>
               <button
-                className="text-sm py-2 "
-                onClick={() => setYoutubeInput(false)}
+                className="text-sm py-2 text-[#0A7227] "
+                onClick={() => {
+                  setYoutubeInput(false);
+                  console.log();
+                }}
                 type="button"
               >
-                Cancel
+                Ok
               </button>
             </div>
           </div>
 
-          <li className="flex hover:bg-[#E7F1E9] p-4 cursor-pointer">
+          <li
+            className="flex hover:bg-[#F7FCF8] p-4 cursor-pointer"
+            onClick={() => {
+              setFacebookInput(true);
+              setYoutubeInput(false);
+            }}
+          >
             <span className="list-icon ">
-              <AiFillPicture className="text-xl text-gray-500  " />
+              <SiGoogleassistant className="text-xl text-gray-500  " />
             </span>
             <div className="list-label px-3 flex flex-col space-y-2 ">
               <p className="leading-4 text-gray-500">Social</p>
@@ -105,6 +117,32 @@ export default function PlusIcon(props) {
               </span>
             </div>
           </li>
+          <div
+            className={`absolute top-40 left-[200px] bg-white p-2 w-[17rem] rounded-md shadow-md z-10 transition-all duration-500 ease-in ${
+              facebookInput ? "visible" : "hidden"
+            }`}
+          >
+            <input
+              type="text"
+              placeholder="Enter Facebook Link"
+              className="p-2 bg-[#F7FCF8] w-[100%] focus:outline-[#CEE3D4] "
+              ref={youtubeInputRef}
+              onChange={props.handleFacebookLink}
+              value={props.facebookInput}
+            />
+            <div className="flex justify-between">
+              <button
+                className="text-sm py-2 text-[#0A7227] "
+                onClick={() => {
+                  setFacebookInput(false);
+                  console.log();
+                }}
+                type="button"
+              >
+                Ok
+              </button>
+            </div>
+          </div>
         </ul>
       </div>
     </div>

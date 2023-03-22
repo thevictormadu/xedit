@@ -1,15 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-import Attachment from "./components/Attachment";
-import AttachYoutube from "./components/AttachYoutube";
+import { useState } from "react";
+import Button from "./components/Button";
+import NavBar from "./components/NavBar";
 import PlusIcon from "./components/PlusIcon";
 import Quill from "./components/Quill";
-import TextEditor from "./components/TextEditor";
-import pic from "./assets/xedit.png";
-import { AiTwotoneTablet } from "react-icons/ai";
-import ReactQuill from "react-quill";
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
-  const [imageFile, setImageFile] = useState("");
   const [youtubeLink, setYoutubeLink] = useState("");
   const [value, setValue] = useState("");
 
@@ -30,26 +26,22 @@ function App() {
   const videoId = getVideoId(youtubeLink);
 
   // Construct the embed URL from the video ID
-  const embedUrl = `https://youtube.com/embed/${videoId}?autoplay=0`;
+  const embedUrl = `https://www.youtube.com/embed/${videoId}?showinfo=0`;
+
+  const iFrameUrl = `<iframe class="ql-video" src="${embedUrl}" frameborder="0"  allowfullscreen></iframe>`;
+
+  console.log(embedUrl, "<<<embedUrl");
+  console.log(videoId, "<<<videoId");
+  console.log(iFrameUrl, "<<<iframeurl");
 
   return (
-    <>
-      {/* <TextEditor />
-      
-      */}
-      <div className="max-w-[80%] m-auto py-10">
+    <ChakraProvider>
+      <div className="max-w-[700px] m-auto md:py-10">
+        <NavBar />
         <div className="relative">
           <Quill value={value} setValue={setValue} />
-          <div className="absolute bottom-4 left-4">
+          <div className="absolute top-[400px] left-4">
             <PlusIcon
-              // handleImageSelect={(event) => {
-              //   console.log(event.target.files, "<<< 1");
-              //   console.log(event.target.files[0], "file <<");
-              //   const imagePath = URL.createObjectURL(event.target.files[0]);
-              // setImageFile(URL.createObjectURL(event.target.files[0]));
-              //setValue(`${value} <img src=${imagePath} />`);
-              //setImageFile(event.target.files[0]);
-              //}}
               handleImageSelect={(event) => {
                 const imagePath = event.target.files[0];
                 const fileReader = new FileReader();
@@ -62,16 +54,27 @@ function App() {
                   console.log(base64EncodedString, "<< value");
                 };
               }}
-              handleYoutubeLink={(event) => setYoutubeLink(event.target.value)}
+              handleYoutubeLink={(event) => {
+                setYoutubeLink(event.target.value);
+                setValue(value.concat(iFrameUrl));
+              }}
+              handleFacebookLink={(event) => {
+                setValue(
+                  value.concat(
+                    '<iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fweb.facebook.com%2F100057627332224%2Fvideos%2F1244330403169740%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>'
+                  )
+                );
+              }}
               youtubeLink={youtubeLink}
               getVideoId={getVideoId}
             />
-            {/* <Attachment imageFile={imageFile} /> */}
-            {/* <AttachYoutube embededUrl={embedUrl} getVideoID={getVideoId} /> */}
+          </div>
+          <div className="pt-6 flex justify-center md:justify-end">
+            <Button />
           </div>
         </div>
       </div>
-    </>
+    </ChakraProvider>
   );
 }
 

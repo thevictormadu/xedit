@@ -1,35 +1,34 @@
-import React, { useState } from 'react'
-import ReactQuill from 'react-quill';
+import React, { useState } from "react";
+import ReactQuill from "react-quill";
 
 import "react-quill/dist/quill.snow.css";
 
-export default function Quill({value, setValue}) {
-    
-    const options = {
-      modules: {
-        toolbar: [
-          ["bold", "italic", "underline", "strike"],
-          [{ header: 1 }, { header: 2 }],
-          [{ list: "ordered" }, { list: "bullet" }],
-          [{ color: [] }, { background: [] }],
-          ["clean"],
-          ["link", "image"],
-        ],
-      },
-      formats: [
-        "header",
-        "bold",
-        "italic",
-        "underline",
-        "strike",
-        "list",
-        "bullet",
-        "color",
-        "background",
-        "link",
-        "image",
+export default function Quill({ value, setValue }) {
+  const options = {
+    modules: {
+      toolbar: [
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        ["image", "link"],
+        [{ align: "" }, { align: "center" }, { align: "right" }],
+        ["bold", "italic"],
+        [{ list: "ordered" }, { list: "bullet" }],
       ],
-    };
+    },
+    formats: [
+      "header",
+      "bold",
+      "italic",
+      "underline",
+      "strike",
+      "list",
+      "bullet",
+      "color",
+      "background",
+      "link",
+      "image",
+      "video",
+    ],
+  };
   return (
     <div>
       <ReactQuill
